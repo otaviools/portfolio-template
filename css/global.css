@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #1d1d1d;
+  font-family: Poppins, sans-serif;
+  opacity: 0;
+  animation: aparecerBody 0.2s ease-out forwards;
+}
+main {
+  max-width: 100%;
+}
+img {
+  display: block;
+}
+@keyframes aparecerBody {
+  to {
+    opacity: 1;
+  }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

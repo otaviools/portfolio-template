@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otávio - Desenvolvedor FullStack & Designer</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="img/detalhe-vermelho.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header" id="header">
+    <a href="#home">
+      <img src="img/logo.svg" alt="Logo" class="logo reveal">
+    </a>
+    <nav aria-label="primaria" id="nav">
+      <ul class="menu reveal" id="menu">
+        <li><a href="#conteudo">Experiência</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <button class="btn-mobile" id="btn-mobile" aria-label="Abrir Menu" aria-expanded="false" aria-controls="menu">
+        <span class="hamburger"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="home">
+    <div class="introducao">
+      <div class="coluna-imagem">
+        <div class="blob-vermelho">
+          <img src="./img/eu.png" alt="eu" class="foto-perfil">
+        </div>
+      </div>
+      <div class="title-container">
+        <h1>Desenvolvedor <br>FullStack &<br> Designer</h1>
+        <p>Localizado em Uberlândia-MG 🧀☕</p>
+        <ul class="stacks">
+          <li class="sql">SQL</li>
+          <li class="java">Java</li>
+          <li>Python</li>
+          <li>Front-End</li>
+        </ul>
+      </div>
+    </div>
+
+    <article class="conteudo" id="conteudo">
+      <div class="titulo-experiencia reveal">
+        <span>EXPE</span>
+        <span>RIÊN</span>
+        <span>CIAS</span>
+      </div>
+      <div class="lado-direito">
+        <div class="sobre reveal">
+          <p>Olá, meu nome é Otávio Oliveira Santos, Dev FullStack e Designer nas horas vagas, apaixonado por conectar interfaces interativas e sistemas robustos. Stacks: HTML, CSS, JavaScript | Java, Python, C e PostgreSQL.</p>
+        </div>
+        <div class="slider-container reveal">
+
+          <div class="slider-track" id="track">
+
+            <div class="retangulo-experiencia">
+              <h3 class="titulo-beyond"><a href="https://otaviools.github.io/praca-sergio-pacheco/#home" target="_blank" rel="noopener noreferrer">Beyond - Encontre o Futuro</a></h3>
+              <p class="desc-beyond">
+                Revitalização de Espaço Urbano (Web System)
+                Desenvolvimento de solução front-end completa voltada para impacto
+                social e urbanismo. O sistema conecta a comunidade ao projeto de
+                revitalização de uma praça, permitindo visualização de etapas.
+              </p>
+              <div class="linguagens-beyond">
+                <span class="btn-1">HTML</span>
+                <span class="btn-2">CSS</span>
+                <span class="btn-3">JS</span>
+                <span class="btn-4">Java</span>
+                <span class="btn-5">SQL</span>
+                <span class="btn-6">Figma</span>
+              </div>
+            </div>
+
+            <div class="retangulo-experiencia">
+              <h3 class="titulo-beyond"><a href="https://github.com/otaviools/projeto-automacao" target="_blank" rel="noopener noreferrer">Price Intelligence Scraper</a></h3>
+              <p class="desc-beyond">
+                Script automatizado para extração de dados
+                de produtos em sites de vendas e processo de informações
+                para estabelecer métricas comparativas.
+              </p>
+              <div class="linguagens-beyond">
+                <span class="btn-1">Python</span>
+                <span class="btn-1">Excel</span>
+              </div>
+            </div>
+          </div> <button class="seta-direita" onclick="moverCarrossel()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="bg-formacao" id="formacao">
+      <article class="container-formacao">
+        <div class="titulo-formacao reveal">
+          <span>FOR</span>
+          <span>MA</span>
+          <span>ÇÃO</span>
+        </div>
+        <div class="container-direita">
+          <div class="sobre2 reveal">
+            <p>Graduando em Sistemas de Informação na ESAMC, com intuito de criar aplicações eficientes, unindo código limpo, performance e foco no usuário.🎓</p>
+          </div>
+          <div class="container-cursos reveal">
+            <div class="cursos-intensivos">
+              <div class="linha-titulo">
+                <img class="logo-curso" src="img/cursos.svg" alt="Ícone de cursos">
+                <p class="cinza">Cursos Intensivos</p>
+              </div>
+              <div class="item-curso">
+                <h3>Origamid UI Design para Iniciantes</h3>
+                <p class="cinza">56h</p>
+              </div>
+              <div class="item-curso">
+                <h3>Origamid Html e CSS para Iniciantes</h3>
+                <p class="cinza">72h</p>
+              </div>
+            </div>
+            <div class="curso-idiomas">
+              <div class="linha-titulo">
+                <img class="logo-idioma" src="img/idiomas.svg" alt="Ícone de idiomas">
+                <p class="cinza">Idiomas</p>
+              </div>
+              <div class="item-idioma">
+                <p class="ingles"><strong>Inglês</strong> Básico/Intermediário</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="rodape reveal" id="contato">
+    <div class="container-rodape">
+      <div class="lado-esquerdo-rodape">
+        <div class="container-sobre">
+          <div class="momento">
+            <p>No momento estou disponível para uma vaga de estágio relacionada as minhas experiências e formações. Entre em contato comigo e marcamos uma conversa ! 👋</p>
+          </div>
+          <div class="redes-sociais">
+            <a href="https://www.linkedin.com/in/otaviols/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img class="linkedin" src="img/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/_otaviools/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <img class="instagram" src="img/instagram.svg" alt="Instagram">
+            </a>
+            <a href="https://github.com/otaviools" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <img class="github" src="img/github.svg" alt="GitHub">
+            </a>
+          </div>
+          <div class="direitos">
+            <p>Otávio. Todos os Direitos Reservados.</p>
+          </div>
+        </div>
+      </div>
+      <div class="lado-direito-rodape">
+        <div class="container-contato">
+          <h3 class="titulo-contato">Contato</h3>
+          <div class="linha-email">
+            <img src="img/email.svg" alt="Email">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=otaviools13@gmail.com&su=" target="_blank" rel="noopener noreferrer">otaviools13@gmail.com</a>
+          </div>
+          <div class="linha-telefone">
+            <img src="img/telefone.svg" alt="Telefone">
+            <a href="https://wa.me/5534993169939" target="_blank" rel="noopener noreferrer">34993169939</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./script.js"></script>
+</body>
+
+</html>
