@@ -1,6 +1,8 @@
 @media screen and (max-width: 768px) {
+  html,
   body {
     overflow-x: hidden;
+    max-width: 100%;
   }
 
   .header {
@@ -77,63 +79,95 @@
     padding: 12px 0;
   }
 
-  /* RESTO DO SEU CÓDIGO RESPONSIVO CONTINUA IGUAL */
-  .blob-vermelho {
+  .introducao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     position: relative;
-    width: 55vh;
-    height: 52vh;
-    top: -35%;
-    left: -80%;
+    padding: 100px 0px 60px 0;
+    overflow: hidden;
+  }
+
+  .coluna-imagem {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    margin-left: 25px;
+    margin-top: 10px;
   }
 
   .coluna-imagem::before {
     content: "";
-    display: block;
     position: absolute;
     z-index: 100;
     width: 150px;
     height: 100px;
     background: url("../img/periodo.svg");
-    margin-left: -420px;
-    margin-top: -150px;
-    border-radius: 10px;
-    border: none;
+    margin-left: 150px;
+    margin-top: 220px;
+    border-radius: 30px;
+  }
+
+  .blob-vermelho {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transform: translate(-30%);
   }
 
   .foto-perfil {
-    width: 110%;
-    object-position: 15px 45px;
-    margin-top: 5px;
+    width: 100%;
+    object-position: -10px 45px;
+    object-fit: cover;
   }
 
   .title-container {
-    display: block;
-    margin-left: -52rem;
-    margin-top: 65vh;
+    position: relative;
+    margin: 0;
+    padding: 0 20px 0 45px;
+    text-align: left;
+    width: 100%;
   }
 
   .title-container h1 {
-    font-size: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2.4rem;
     font-weight: 700;
   }
   .title-container h1::before {
     content: "";
     position: absolute;
     width: 10px;
-    height: 150px;
-    margin-left: -25px;
-    margin-top: 8px;
+    height: 120px;
+    left: 20px;
+    top: 5px;
     border-radius: 50px;
     background: #ab3131;
   }
 
   .title-container p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-left: -25px;
+    margin-top: -30px;
   }
 
   .stacks {
     margin-left: -25px;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 30px;
+  }
+
+  .stacks li {
+    padding: 6px 14px;
   }
 
   .conteudo {
@@ -158,12 +192,16 @@
     color: #fff;
   }
 
+  .titulo-experiencia {
+    margin-top: -170px;
+  }
+
   .bg-formacao {
-    height: 580px;
+    height: 620px;
   }
 
   .container-cursos {
-    margin-top: -30px;
+    margin-top: -40px;
   }
 
   .conteudo,
@@ -204,6 +242,7 @@
     margin-left: 0;
     width: 100%;
     max-width: 100%;
+    margin-top: -30px;
   }
 
   .retangulo-experiencia::before,
@@ -286,8 +325,9 @@
 
   .momento {
     font-size: 1rem;
-    width: 400px;
+    width: 90%;
     margin-top: -30px;
+    margin-bottom: 40px;
   }
 
   .direitos {
@@ -296,17 +336,22 @@
     font-size: 1rem;
   }
 
+  .titulo-contato {
+    font-weight: 900;
+  }
+
   .titulo-contato::before {
     content: "";
     background: #ab3131;
-    width: 60px;
-    height: 4px;
+    width: 100px;
+    height: 5px;
     position: absolute;
-    margin-top: -10px;
+    margin-top: -20px;
     border-radius: 40px;
   }
 
   .redes-sociais {
+    display: none;
     justify-content: flex-start;
     margin: -25px auto auto;
     gap: 20px;
@@ -321,10 +366,11 @@
   .container-contato {
     margin: 0 0 0 -20px;
     margin-top: 30px;
-    width: 100vw;
+    width: 100%;
     border: none;
     border-radius: 0;
     padding: 30px 20px;
+    box-sizing: border-box;
   }
 
   .container-contato h3,
@@ -335,5 +381,12 @@
 
   .curso-idiomas {
     margin-top: -40px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .blob-vermelho {
+    width: 400px;
+    height: 400px;
   }
 }
