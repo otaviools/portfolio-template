@@ -68,6 +68,17 @@
   margin-bottom: 50px;
 }
 
+.title-container h1::before {
+  position: absolute;
+  content: "";
+  background: url("../img/vermelho-detalhe.svg");
+  width: 58px;
+  height: 67px;
+  margin-left: -28px;
+  margin-top: -10px;
+  z-index: -2;
+}
+
 .title-container p {
   font-size: 1.5rem;
   color: #ccc;

@@ -4,6 +4,15 @@
     overflow-x: hidden;
     max-width: 100%;
   }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .reveal.active {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 
   .header {
     padding: 20px;
@@ -151,6 +160,8 @@
     top: 5px;
     border-radius: 50px;
     background: #ab3131;
+    margin-left: auto;
+    margin-top: auto;
   }
 
   .title-container p {
@@ -253,14 +264,14 @@
   }
 
   .titulo-beyond a {
-    color: #2ecc71;
+    color: #ab3131;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .titulo-beyond::before {
     content: "";
-    background: #2ecc71;
+    background: #ab3131;
     width: 60px;
     height: 2px;
     border-radius: 40px;
@@ -271,8 +282,9 @@
   .desc-beyond {
     font-size: 0.9rem;
     width: 100%;
-    max-width: 90%;
+    max-width: 380px;
     margin-top: 15px;
+    line-height: 1.4;
   }
 
   .linguagens-beyond {
@@ -282,14 +294,12 @@
   }
 
   .linguagens-beyond span {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-top: -4px;
   }
 
   .seta-direita {
-    align-items: center;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
   }
 
   .btn-6 {
@@ -343,24 +353,24 @@
   .titulo-contato::before {
     content: "";
     background: #ab3131;
-    width: 100px;
-    height: 5px;
+    width: 150px;
+    height: 6px;
     position: absolute;
     margin-top: -20px;
-    border-radius: 40px;
+    border-radius: 50px;
   }
 
   .redes-sociais {
-    display: none;
     justify-content: flex-start;
-    margin: -25px auto auto;
-    gap: 20px;
+    margin: 0px auto;
+    gap: 15px;
+    margin-top: -50px;
   }
 
   .linkedin,
   .instagram,
   .github {
-    width: 50px;
+    width: 30px;
   }
 
   .container-contato {
@@ -373,6 +383,10 @@
     box-sizing: border-box;
   }
 
+  .container-contato::before {
+    display: none;
+  }
+
   .container-contato h3,
   .linha-email,
   .linha-telefone {
@@ -382,6 +396,9 @@
   .curso-idiomas {
     margin-top: -40px;
   }
+}
+.footer-contato {
+  gap: 30px;
 }
 
 @media screen and (max-width: 375px) {

@@ -28,6 +28,24 @@
   padding: 50px 0;
 }
 
+.social-link {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(50, 50, 50, 0.6);
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: #ab3131;
+  transform: translateY(-3px);
+}
+
 .linkedin,
 .instagram,
 .github {
@@ -56,50 +74,58 @@
   margin-left: -170px;
 }
 
+.container-contato::before {
+  content: "";
+  background: url("../img/vermelho-detalhe.svg");
+  width: 58px;
+  height: 67px;
+  position: absolute;
+  margin-left: -70px;
+  margin-top: -70px;
+}
+
 .container-contato h3 {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 25px;
   font-size: 30px;
 }
 
-.linha-email,
-.linha-telefone {
+.footer-contato {
   display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.footer-link {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
   align-items: center;
-  gap: 15px;
-  font-size: 20px;
 }
 
-.linha-telefone {
-  margin-top: 30px;
-  gap: 20px;
+.footer-link img {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background-color: rgba(50, 50, 50, 0.6);
+  border-radius: 10px;
+  transition: background-color 0.3s;
 }
 
-.linha-email a,
-.linha-telefone a {
+.footer-link:hover img {
+  background-color: #ab3131;
+}
+
+.footer-contato a {
   color: #fff;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  font-size: 1.3rem;
 }
 
-.linha-email a:hover,
-.linha-telefone a:hover {
-  text-decoration: underline;
+.footer-contato a:hover {
   color: #ab3131;
-}
-
-.linha-email img,
-.linha-telefone img {
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.linha-telefone img {
-  margin-left: 2px;
-}
-
-.linha-email img:hover,
-.linha-telefone img:hover {
-  transform: translateY(-2px);
+  transition: all 0.2s ease-in-out;
+  text-decoration: underline;
 }
