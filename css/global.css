@@ -22,7 +22,7 @@
 
   /* EXPERIENCIA */
   --cor-titulo: radial-gradient(
-    circle at center,
+    circle at left,
     #cbcbcb 0%,
     #f1f1f1 15%,
     #aeadad 36%,
@@ -42,6 +42,18 @@
   --fundo-redes-sociais: rgba(50, 50, 50, 0.6);
   --borda-contato: #4b4b4b;
   --fundo-img: rgba(50, 50, 50, 0.6);
+
+  /* RESPONSIVIDADE */
+  --sombra-menu: rgba(0, 0, 0, 0.5);
+  --sombra-borda: rgba(255, 255, 255, 0.1);
+  --cor-titulo-celular: linear-gradient(
+    #cbcbcb 0%,
+    #f1f1f1 15%,
+    #aeadad 36%,
+    #797979 61%,
+    #525252 89%,
+    #323232 100%
+  );
 }
 
 @media (prefers-color-scheme: light) {
@@ -77,9 +89,21 @@
     --cor-cursos: #474747;
 
     /* RODAPE */
-    --fundo-redes-sociais: #474747;
+    --fundo-redes-sociais: rgba(168, 168, 168, 0.6);
     --borda-contato: #c2c2c2;
-    --fundo-img: #474747;
+    --fundo-img: rgba(168, 168, 168, 0.6);
+
+    /* RESPONSIVIDADE */
+    --sombra-menu: rgba(0, 0, 0, 0.5);
+    --sombra-borda: rgba(255, 255, 255, 0.1);
+    --cor-titulo-celular: linear-gradient(
+      #323232 100%,
+      #525252 15%,
+      #797979 36%,
+      #aeadad 61%,
+      #f1f1f1 89%,
+      #cbcbcb 100%
+    );
   }
 }
 

@@ -33,7 +33,7 @@
     top: 0;
     right: 0;
     width: 100%;
-    max-width: 300px;
+    max-width: 270px;
     height: 100vh;
     background: var(--fundo-scroll);
     flex-direction: column;
@@ -44,8 +44,8 @@
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s ease-in-out;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -10px 0 30px var(--sombra-menu);
+    border-left: 1px solid var(--sombra-borda);
     list-style: none;
     overflow-y: auto;
   }
@@ -199,10 +199,10 @@
 
   .titulo-experiencia span,
   .titulo-formacao span {
-    background: none;
-    -webkit-background-clip: border-box;
-    -webkit-text-fill-color: initial;
-    color: var(--cor-titulo);
+    background: var(--cor-titulo-celular);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .titulo-experiencia {
