@@ -114,6 +114,12 @@ class CarrosselTouch {
   }
 
   handleStart(event) {
+    // Não previne o comportamento padrão se clicar em um link ou botão
+    const target = event.target;
+    if (target.tagName === "A" || target.closest("a")) {
+      return; // Permite que links funcionem normalmente
+    }
+
     // Previne o comportamento padrão apenas no touch
     if (event.type === "touchstart") {
       event.preventDefault();
