@@ -1,6 +1,6 @@
 .rodape {
   width: 100%;
-  background: var(--fundo);
+  background: var(--fundo-rodape);
 }
 
 .container-rodape {
@@ -47,14 +47,22 @@
 
 .linkedin,
 .instagram,
-.github {
+.github,
+.email,
+.celular {
   transition: all 0.3s ease-in-out;
 }
 
 .linkedin:hover,
 .instagram:hover,
-.github:hover {
+.github:hover,
+.celular:hover,
+.email:hover {
   transform: translateY(-2px);
+}
+
+.direitos {
+  margin-top: 20px;
 }
 
 .lado-direito-rodape {
@@ -108,9 +116,9 @@
   width: 50px;
   height: 50px;
   padding: 10px;
-  background-color: var(--fundo-img);
+  background-color: var(--fundo-redes-sociais);
   border-radius: 10px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .footer-link:hover img {

@@ -7,7 +7,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.1 }
+  { threshold: 0.1 },
 );
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
@@ -23,7 +23,7 @@ function toggleMenu(event) {
   event.currentTarget.setAttribute("aria-expanded", isActive);
   event.currentTarget.setAttribute(
     "aria-label",
-    isActive ? "Fechar Menu" : "Abrir Menu"
+    isActive ? "Fechar Menu" : "Abrir Menu",
   );
 }
 
@@ -47,140 +47,256 @@ document.querySelectorAll(".menu a").forEach((link) => {
   link.addEventListener("click", fecharMenu);
 });
 
-// CARROSSEL COM ARRASTAR
-let indiceAtual = 0;
+// ============================================
+// CARROSSEL COM ARRASTAR MELHORADO
+// ============================================
+
+class CarrosselTouch {
+  constructor(trackElement) {
+    this.track = trackElement;
+    this.indiceAtual = 0;
+    this.isDragging = false;
+    this.startPos = 0;
+    this.currentTranslate = 0;
+    this.prevTranslate = 0;
+    this.animationID = null;
+    this.autoPlayInterval = null;
+    this.inactivityTimer = null;
+    this.startTime = 0;
+    this.velocidade = 0;
+
+    // Configurações
+    this.config = {
+      autoPlayDelay: 3500,
+      inactivityDelay: 5000,
+      minSwipeDistance: 50, // Reduzido para maior sensibilidade
+      velocityThreshold: 0.3, // Para detectar swipe rápido
+      transitionDuration: 0.5,
+    };
+
+    this.init();
+  }
+
+  init() {
+    if (!this.track) return;
+
+    this.totalSlides = document.querySelectorAll(
+      ".retangulo-experiencia",
+    ).length;
+
+    // Touch events (mobile)
+    this.track.addEventListener("touchstart", this.handleStart.bind(this), {
+      passive: false,
+    });
+    this.track.addEventListener("touchmove", this.handleMove.bind(this), {
+      passive: false,
+    });
+    this.track.addEventListener("touchend", this.handleEnd.bind(this));
+    this.track.addEventListener("touchcancel", this.handleEnd.bind(this));
+
+    // Mouse events (desktop)
+    this.track.addEventListener("mousedown", this.handleStart.bind(this));
+    this.track.addEventListener("mousemove", this.handleMove.bind(this));
+    this.track.addEventListener("mouseup", this.handleEnd.bind(this));
+    this.track.addEventListener("mouseleave", this.handleEnd.bind(this));
+
+    // Previne o comportamento padrão de arrastar imagens
+    this.track.addEventListener("dragstart", (e) => e.preventDefault());
+
+    // Inicia autoplay se for mobile
+    this.iniciarAutoPlay();
+
+    // Reinicia autoplay ao redimensionar
+    window.addEventListener("resize", () => {
+      this.pararAutoPlay();
+      this.iniciarAutoPlay();
+    });
+  }
+
+  handleStart(event) {
+    // Previne o comportamento padrão apenas no touch
+    if (event.type === "touchstart") {
+      event.preventDefault();
+    }
+
+    this.isDragging = true;
+    this.startPos = this.getPositionX(event);
+    this.startTime = Date.now();
+    this.track.style.cursor = "grabbing";
+
+    // Remove a transição para movimento suave durante o arrasto
+    this.track.style.transition = "none";
+
+    // Para o autoplay
+    this.pararAutoPlay();
+
+    // Cancela qualquer animação em andamento
+    if (this.animationID) {
+      cancelAnimationFrame(this.animationID);
+    }
+  }
+
+  handleMove(event) {
+    if (!this.isDragging) return;
+
+    // Previne scroll vertical ao arrastar horizontalmente
+    if (event.type === "touchmove") {
+      const touch = event.touches[0];
+      const diffX = Math.abs(touch.clientX - this.startPos);
+      const diffY = Math.abs(touch.clientY - (this.startPosY || touch.clientY));
+
+      // Se o movimento horizontal é maior que vertical, previne scroll
+      if (diffX > diffY) {
+        event.preventDefault();
+      }
+    }
+
+    const currentPosition = this.getPositionX(event);
+    const diff = currentPosition - this.startPos;
+
+    // Adiciona resistência nas bordas
+    let resistance = 1;
+    if (
+      (this.indiceAtual === 0 && diff > 0) ||
+      (this.indiceAtual === this.totalSlides - 1 && diff < 0)
+    ) {
+      resistance = 0.3; // 30% de resistência nas bordas
+    }
+
+    this.currentTranslate = this.prevTranslate + diff * resistance;
+
+    // Calcula velocidade para swipe rápido
+    const timeElapsed = Date.now() - this.startTime;
+    this.velocidade = Math.abs(diff) / timeElapsed;
+
+    // Atualiza posição com requestAnimationFrame para melhor performance
+    this.animationID = requestAnimationFrame(() => {
+      this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+    });
+  }
+
+  handleEnd() {
+    if (!this.isDragging) return;
+
+    this.isDragging = false;
+    this.track.style.cursor = "grab";
+    this.track.style.transition = `transform ${this.config.transitionDuration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+
+    const movedBy = this.currentTranslate - this.prevTranslate;
+    const slideWidth = this.track.offsetWidth;
+
+    // Decide se muda de slide baseado na distância ou velocidade
+    const shouldChange =
+      Math.abs(movedBy) > this.config.minSwipeDistance ||
+      this.velocidade > this.config.velocityThreshold;
+
+    if (shouldChange) {
+      if (movedBy < 0 && this.indiceAtual < this.totalSlides - 1) {
+        this.indiceAtual++;
+      } else if (movedBy > 0 && this.indiceAtual > 0) {
+        this.indiceAtual--;
+      }
+    }
+
+    this.setPositionByIndex();
+
+    // Reinicia autoplay após inatividade
+    clearTimeout(this.inactivityTimer);
+    this.inactivityTimer = setTimeout(() => {
+      this.iniciarAutoPlay();
+    }, this.config.inactivityDelay);
+
+    // Reset da velocidade
+    this.velocidade = 0;
+  }
+
+  getPositionX(event) {
+    return event.type.includes("mouse")
+      ? event.pageX
+      : event.touches[0].clientX;
+  }
+
+  setPositionByIndex() {
+    const slideWidth = this.track.offsetWidth;
+    this.currentTranslate = this.indiceAtual * -slideWidth;
+    this.prevTranslate = this.currentTranslate;
+    this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+  }
+
+  moverCarrossel() {
+    this.indiceAtual++;
+    if (this.indiceAtual >= this.totalSlides) {
+      this.indiceAtual = 0;
+    }
+    this.setPositionByIndex();
+  }
+
+  iniciarAutoPlay() {
+    // Só ativa autoplay no mobile
+    if (window.innerWidth <= 768 && this.track && !this.autoPlayInterval) {
+      this.autoPlayInterval = setInterval(() => {
+        this.moverCarrossel();
+      }, this.config.autoPlayDelay);
+    }
+  }
+
+  pararAutoPlay() {
+    if (this.autoPlayInterval) {
+      clearInterval(this.autoPlayInterval);
+      this.autoPlayInterval = null;
+    }
+  }
+
+  // Método para ir para um slide específico (útil para navegação)
+  irParaSlide(index) {
+    if (index >= 0 && index < this.totalSlides) {
+      this.indiceAtual = index;
+      this.track.style.transition = `transform ${this.config.transitionDuration}s ease-in-out`;
+      this.setPositionByIndex();
+    }
+  }
+
+  // Método para destruir o carrossel (cleanup)
+  destroy() {
+    this.pararAutoPlay();
+    clearTimeout(this.inactivityTimer);
+    if (this.animationID) {
+      cancelAnimationFrame(this.animationID);
+    }
+  }
+}
+
+// Inicializa o carrossel
 const track = document.getElementById("track");
+let carrossel;
 
-// Variáveis para arrastar
-let isDragging = false;
-let startPos = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
-
-// Variáveis para autoplay
-let autoPlayInterval;
-
-// Função do botão (desktop)
-function moverCarrossel() {
-  const totalSlides = document.querySelectorAll(
-    ".retangulo-experiencia"
-  ).length;
-
-  indiceAtual++;
-  if (indiceAtual >= totalSlides) {
-    indiceAtual = 0;
-  }
-
-  setPositionByIndex();
-}
-
-// AUTOPLAY NO MOBILE
-function iniciarAutoPlay() {
-  if (window.innerWidth <= 768 && track) {
-    autoPlayInterval = setInterval(() => {
-      moverCarrossel();
-    }, 3500); // Muda a cada 3.5 segundos
-  }
-}
-
-function pararAutoPlay() {
-  if (autoPlayInterval) {
-    clearInterval(autoPlayInterval);
-    autoPlayInterval = null;
-  }
-}
-
-// Touch events (mobile)
 if (track) {
-  track.addEventListener("touchstart", touchStart);
-  track.addEventListener("touchmove", touchMove);
-  track.addEventListener("touchend", touchEnd);
-
-  // Mouse events (desktop - opcional)
-  track.addEventListener("mousedown", touchStart);
-  track.addEventListener("mousemove", touchMove);
-  track.addEventListener("mouseup", touchEnd);
-  track.addEventListener("mouseleave", touchEnd);
-
-  // Inicia o autoplay
-  iniciarAutoPlay();
+  carrossel = new CarrosselTouch(track);
 }
 
-function touchStart(event) {
-  isDragging = true;
-  startPos = getPositionX(event);
-  track.style.cursor = "grabbing";
-  track.style.transition = "none";
-
-  // Para o autoplay quando usuário interagir
-  pararAutoPlay();
-}
-
-function touchMove(event) {
-  if (!isDragging) return;
-
-  const currentPosition = getPositionX(event);
-  currentTranslate = prevTranslate + currentPosition - startPos;
-  track.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-let inactivityTimer;
-
-function touchEnd() {
-  if (!isDragging) return;
-
-  isDragging = false;
-  track.style.cursor = "grab";
-  track.style.transition = "transform 0.5s ease-in-out";
-
-  const movedBy = currentTranslate - prevTranslate;
-  const totalSlides = document.querySelectorAll(
-    ".retangulo-experiencia"
-  ).length;
-
-  // Se arrastou mais de 100px, muda de slide
-  if (movedBy < -100 && indiceAtual < totalSlides - 1) {
-    indiceAtual += 1;
-  }
-
-  if (movedBy > 100 && indiceAtual > 0) {
-    indiceAtual -= 1;
-  }
-
-  setPositionByIndex();
-
-  // Reinicia autoplay após 5 segundos de inatividade
-  clearTimeout(inactivityTimer);
-  inactivityTimer = setTimeout(() => {
-    iniciarAutoPlay();
-  }, 5000);
-}
-
-function getPositionX(event) {
-  return event.type.includes("mouse") ? event.pageX : event.touches[0].clientX;
-}
-
-function setPositionByIndex() {
-  currentTranslate = indiceAtual * -track.offsetWidth;
-  prevTranslate = currentTranslate;
-  track.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-// Reinicia autoplay ao redimensionar
-window.addEventListener("resize", () => {
-  pararAutoPlay();
-  iniciarAutoPlay();
-});
+// ============================================
+// HEADER E SCROLL EFFECTS
+// ============================================
 
 // Header scroll effect
 const header = document.getElementById("header");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
+let lastScroll = 0;
+
+window.addEventListener(
+  "scroll",
+  () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+
+    lastScroll = currentScroll;
+  },
+  { passive: true },
+);
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

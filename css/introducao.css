@@ -41,7 +41,7 @@
     #7b2222 89%,
     #521717 100%
   );
-  box-shadow: 20px 20px 40px rgba(199, 54, 54, 0.185);
+  box-shadow: 20px 20px 40px rgba(199, 54, 54, 0.3);
   position: relative;
   z-index: 1;
 }

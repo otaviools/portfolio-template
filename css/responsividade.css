@@ -246,9 +246,9 @@
     min-width: 100%;
     width: 100%;
     box-sizing: border-box;
-    padding: 30px 20px;
+    padding: 20px 10px;
     margin-top: 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: none;
   }
 
   .slider-container {
@@ -256,6 +256,7 @@
     width: 100%;
     max-width: 100%;
     margin-top: -30px;
+    border: none;
   }
 
   .retangulo-experiencia::before,
@@ -265,37 +266,38 @@
     display: none;
   }
 
-  .titulo-beyond a {
+  .titulo a {
     color: var(--cor-primaria);
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: 700;
+    text-decoration: underline;
   }
 
-  .titulo-beyond::before {
+  .titulo::before {
     content: "";
     background: var(--cor-primaria);
     width: 60px;
     height: 2px;
     border-radius: 40px;
     position: absolute;
-    margin-top: -10px;
+    margin-top: -20px;
   }
 
-  .desc-beyond {
-    font-size: 0.9rem;
+  .desc {
+    font-size: 1rem;
     width: 100%;
     max-width: 380px;
     margin-top: 15px;
     line-height: 1.4;
   }
 
-  .linguagens-beyond {
+  .linguagens {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 8px;
   }
 
-  .linguagens-beyond span {
+  .linguagens span {
     font-size: 0.8rem;
     margin-top: -4px;
   }
@@ -316,12 +318,60 @@
     margin-bottom: 20px;
   }
 
-  .cinza {
+  .linha-titulo img {
+    width: 35px;
+  }
+
+  .linha-titulo {
+    align-items: start;
+    margin-bottom: 20px;
+  }
+
+  .titulo-cinza {
     margin-top: 5px;
   }
 
+  .horas {
+    margin-left: 20px;
+    font-weight: 700;
+    color: var(--cor-cursos);
+  }
+
+  .item-curso .titulo-curso {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-left: 20px;
+  }
+
+  .titulo-curso::before {
+    position: absolute;
+    content: "";
+    background: var(--cor-primaria);
+    width: 45px;
+    height: 3px;
+    transform: rotate(90deg);
+    margin-left: -40px;
+    margin-top: 20px;
+  }
+  .titulo-ingles {
+    margin-left: 20px;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .titulo-ingles::before {
+    position: absolute;
+    content: "";
+    background: var(--cor-primaria);
+    width: 30px;
+    height: 3px;
+    transform: rotate(90deg);
+    margin-left: -32px;
+    margin-top: 12px;
+  }
+
   .rodape {
-    background: var(--fundo);
+    background: var(--fundo-rodape);
   }
 
   .lado-esquerdo-rodape,

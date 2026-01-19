@@ -49,7 +49,7 @@
   color: var(--cor-fonte);
 }
 
-.cinza {
+.titulo-cinza {
   color: var(--cor-cursos);
   margin-top: -10px;
   font-weight: 700;

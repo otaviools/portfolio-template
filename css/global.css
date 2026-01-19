@@ -33,6 +33,7 @@
   --cor-seta: rgba(48, 48, 48, 0.5);
   --cor-hover: #8a2929;
   --cor-linguagens: #fff;
+  --cor-borda-retangulo: #47474786;
 
   /* FORMACAO */
   --fundo-formacao: #212121;
@@ -41,7 +42,7 @@
   /* RODAPE */
   --fundo-redes-sociais: rgba(50, 50, 50, 0.6);
   --borda-contato: #4b4b4b;
-  --fundo-img: rgba(50, 50, 50, 0.6);
+  --fundo-rodape: #1d1d1d;
 
   /* RESPONSIVIDADE */
   --sombra-menu: rgba(0, 0, 0, 0.5);
@@ -83,15 +84,16 @@
     --cor-titulo: #474747;
     --cor-seta: rgba(255, 255, 255, 0.5);
     --cor-hover: #8a2929;
+    --cor-borda-retangulo: #47474759;
 
     /* FORMACAO */
-    --fundo-formacao: #e6e5e5;
+    --fundo-formacao: #eee;
     --cor-cursos: #474747;
 
     /* RODAPE */
-    --fundo-redes-sociais: rgba(168, 168, 168, 0.6);
-    --borda-contato: #c2c2c2;
-    --fundo-img: rgba(168, 168, 168, 0.6);
+    --fundo-redes-sociais: rgb(192, 192, 192);
+    --borda-contato: #ffffff;
+    --fundo-rodape: rgba(168, 168, 168, 0.336);
 
     /* RESPONSIVIDADE */
     --sombra-menu: rgba(0, 0, 0, 0.5);
