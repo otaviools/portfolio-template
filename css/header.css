@@ -12,15 +12,15 @@
   right: 0;
   z-index: 1000;
   backdrop-filter: blur(50px);
-  background: #111111a2;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--fundo-header);
+  border-bottom: 1px solid var(--borda-header);
   transition: all 0.3s ease;
 }
 
 .header.scrolled {
   padding: 20px 40px;
-  background: #111111;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  background: var(--fundo-scroll);
+  box-shadow: 0 4px 30px var(--borda-scroll);
 }
 
 .logo {
@@ -55,7 +55,7 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--menu);
   letter-spacing: 0.5px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -71,12 +71,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #ab3131, #d94444);
+  background: linear-gradient(90deg, var(--cor-primaria));
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu a:hover {
-  color: #ffffff;
+  color: var(--menu-hover);
 }
 
 .menu a:hover::after {
@@ -97,7 +97,7 @@
   display: block;
   width: 28px;
   height: 2px;
-  background: #fff;
+  background: var(--fundo-hamburguer);
   position: relative;
   transition: all 0.3s ease;
 }
@@ -108,7 +108,7 @@
   position: absolute;
   width: 28px;
   height: 2px;
-  background: #fff;
+  background: var(--fundo-hamburguer);
   transition: all 0.3s ease;
 }
 

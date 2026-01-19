@@ -17,15 +17,7 @@
 }
 
 .titulo-experiencia span {
-  background: radial-gradient(
-    circle at center,
-    #cbcbcb 0%,
-    #f1f1f1 15%,
-    #aeadad 36%,
-    #797979 61%,
-    #525252 89%,
-    #323232 100%
-  );
+  background: var(--cor-titulo);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -35,7 +27,7 @@
   margin: 220px 0 0 -21px;
   font-size: 20px;
   max-width: 670px;
-  color: #fff;
+  color: var(--cor-fonte);
   line-height: 1.5;
 }
 
@@ -80,7 +72,7 @@
   content: "";
   width: 230px;
   height: 4px;
-  background: #ab3131;
+  background: var(--cor-primaria);
   position: absolute;
   transform: rotate(90deg);
   margin-left: -140px;
@@ -92,8 +84,8 @@
   top: 50%;
   right: 50px;
   transform: translateY(-50%);
-  background-color: rgba(48, 48, 48, 0.5);
-  border: 1px solid #ab3131;
+  background-color: var(--cor-seta);
+  border: 1px solid var(--cor-primaria);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -107,11 +99,11 @@
 
 .seta-direita:hover svg path {
   transition: all 0.3s ease-in-out;
-  stroke: #fff;
+  stroke: var(--cor-fonte);
 }
 
 .titulo-beyond a {
-  color: #ab3131;
+  color: var(--cor-primaria);
   font-size: 20px;
   font-weight: 700;
   transition: all 0.3s ease-in-out;
@@ -119,12 +111,12 @@
 }
 
 .titulo-beyond a:hover {
-  color: #8a2929;
+  color: var(--cor-hover);
   text-decoration: underline;
 }
 
 .desc-beyond {
-  color: #fff;
+  color: var(--cor-fonte);
   margin: 15px 0 25px;
   line-height: 1.5;
   font-size: 1rem;
@@ -140,8 +132,8 @@
 .linguagens-beyond span {
   margin-top: 10px;
   display: inline-block;
-  background: #ab3131;
-  color: #fff;
+  background: var(--cor-primaria);
+  color: var(--cor-linguagens);
   padding: 6px 14px;
   border-radius: 8px;
   font-size: 14px;
@@ -150,6 +142,6 @@
 }
 
 .linguagens-beyond span:hover {
-  background: #8a2929;
+  background: var(--cor-hover);
   transform: translateY(-2px);
 }

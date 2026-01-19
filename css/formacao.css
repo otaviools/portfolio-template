@@ -1,6 +1,6 @@
 .bg-formacao {
   width: 100%;
-  background: #212121;
+  background: var(--fundo-formacao);
 }
 
 .container-formacao {
@@ -22,15 +22,7 @@
 }
 
 .titulo-formacao span {
-  background: radial-gradient(
-    circle at center,
-    #cbcbcb 0%,
-    #f1f1f1 15%,
-    #aeadad 36%,
-    #797979 61%,
-    #525252 89%,
-    #323232 100%
-  );
+  background: var(--cor-titulo);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -47,18 +39,18 @@
   margin-top: 130px;
   font-size: 20px;
   max-width: 670px;
-  color: #fff;
+  color: var(--cor-fonte);
   line-height: 1.5;
 }
 
 .container-cursos {
   display: grid;
   gap: 50px;
-  color: #fff;
+  color: var(--cor-fonte);
 }
 
 .cinza {
-  color: #8d8d8d;
+  color: var(--cor-cursos);
   margin-top: -10px;
   font-weight: 700;
 }
@@ -85,7 +77,7 @@
 
 .item-idioma p {
   font-size: 18px;
-  color: #fff;
+  color: var(--cor-fonte);
 }
 
 .linha-titulo {

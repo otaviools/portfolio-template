@@ -35,7 +35,7 @@
     width: 100%;
     max-width: 300px;
     height: 100vh;
-    background: rgba(29, 29, 29, 0.98);
+    background: var(--fundo-scroll);
     flex-direction: column;
     justify-content: center;
     gap: 30px;
@@ -62,7 +62,9 @@
     border-bottom: none;
     opacity: 0;
     transform: translateX(20px);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out;
   }
 
   #nav.active .menu li {
@@ -159,7 +161,7 @@
     left: 20px;
     top: 5px;
     border-radius: 50px;
-    background: #ab3131;
+    background: var(--cor-primaria);
     margin-left: auto;
     margin-top: auto;
   }
@@ -200,7 +202,7 @@
     background: none;
     -webkit-background-clip: border-box;
     -webkit-text-fill-color: initial;
-    color: #fff;
+    color: var(--cor-titulo);
   }
 
   .titulo-experiencia {
@@ -264,14 +266,14 @@
   }
 
   .titulo-beyond a {
-    color: #ab3131;
+    color: var(--cor-primaria);
     font-size: 20px;
     font-weight: 700;
   }
 
   .titulo-beyond::before {
     content: "";
-    background: #ab3131;
+    background: var(--cor-primaria);
     width: 60px;
     height: 2px;
     border-radius: 40px;
@@ -319,7 +321,7 @@
   }
 
   .rodape {
-    background: #1d1d1d;
+    background: var(--fundo);
   }
 
   .lado-esquerdo-rodape,
@@ -352,7 +354,7 @@
 
   .titulo-contato::before {
     content: "";
-    background: #ab3131;
+    background: var(--cor-primaria);
     width: 150px;
     height: 6px;
     position: absolute;

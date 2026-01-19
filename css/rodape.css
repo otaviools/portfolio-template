@@ -1,6 +1,6 @@
 .rodape {
   width: 100%;
-  background: #1d1d1d;
+  background: var(--fundo);
 }
 
 .container-rodape {
@@ -14,7 +14,7 @@
 .lado-esquerdo-rodape {
   padding: 100px;
   margin-top: 40px;
-  color: #fff;
+  color: var(--cor-fonte);
   width: 600px;
 }
 
@@ -35,14 +35,14 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background: rgba(50, 50, 50, 0.6);
-  color: #fff;
+  background: var(--fundo-redes-sociais);
+  color: var(--cor-fonte);
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .social-link:hover {
-  background: #ab3131;
+  background: var(--cor-primaria);
   transform: translateY(-3px);
 }
 
@@ -61,12 +61,12 @@
 .lado-direito-rodape {
   padding: 100px;
   margin-top: 30px;
-  color: #fff;
+  color: var(--cor-fonte);
 }
 
 .container-contato {
   background: none;
-  border: 1px solid #4b4b4b;
+  border: 1px solid var(--borda-contato);
   border-radius: 20px;
   padding: 50px;
   width: 500px;
@@ -109,23 +109,22 @@
   width: 50px;
   height: 50px;
   padding: 10px;
-  background-color: rgba(50, 50, 50, 0.6);
+  background-color: var(--fundo-img);
   border-radius: 10px;
   transition: background-color 0.3s;
 }
 
 .footer-link:hover img {
-  background-color: #ab3131;
+  background-color: var(--cor-primaria);
 }
 
 .footer-contato a {
-  color: #fff;
+  color: var(--cor-fonte);
   text-decoration: none;
   font-size: 1.3rem;
 }
 
 .footer-contato a:hover {
-  color: #ab3131;
+  color: var(--cor-primaria);
   transition: all 0.2s ease-in-out;
-  text-decoration: underline;
 }
